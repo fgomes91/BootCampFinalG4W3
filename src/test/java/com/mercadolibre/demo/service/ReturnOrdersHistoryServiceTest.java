@@ -15,6 +15,7 @@ import org.mockito.Mockito;
 
 import com.mercadolibre.demo.dto.ReturnOrdersDTO;
 import com.mercadolibre.demo.dto.ReturnOrdersHistoryDTO;
+import com.mercadolibre.demo.model.BatchStock;
 import com.mercadolibre.demo.model.Buyer;
 import com.mercadolibre.demo.model.ItemOfProduct;
 import com.mercadolibre.demo.model.OrderStatus;
@@ -117,22 +118,6 @@ public class ReturnOrdersHistoryServiceTest {
 		return purchaseOrder;
 	}
 
-	ReturnOrdersDTO createReturnOrdersDTO() {
-		ReturnOrdersDTO returnOrdersDTO = new ReturnOrdersDTO();
-		returnOrdersDTO.setIdItemOfProduct(createItemOfProduct().getId());
-		returnOrdersDTO.setReason("Produto entregue fora do prazo e com embalagem danificada");
-		returnOrdersDTO.setDamage("Sim");
-		return returnOrdersDTO;
-	}
-
-	ReturnOrdersDTO createFailReturnOrdersDTO() {
-		ReturnOrdersDTO returnOrdersDTO = new ReturnOrdersDTO();
-		returnOrdersDTO.setIdItemOfProduct(null);
-		returnOrdersDTO.setReason("Produto entregue fora do prazo e com embalagem danificada");
-		returnOrdersDTO.setDamage("Veio estragado");
-		return returnOrdersDTO;
-	}
-
 	ReturnOrders createReturnOrders() {
 		ReturnOrders returnOrders  = new ReturnOrders();
 		returnOrders.setIdReturnOrders(1L);
@@ -142,37 +127,42 @@ public class ReturnOrdersHistoryServiceTest {
 		returnOrders.setDamage("Sim");
 		return returnOrders;
 	}
-
-	List<ReturnOrders> createListReturnOrders() {
-		List<ReturnOrders> list = new ArrayList<>();
+	
+	ReturnOrders createReturnOrdersDamegeYes() {
 		ReturnOrders returnOrders  = new ReturnOrders();
 		returnOrders.setIdReturnOrders(1L);
 		returnOrders.setIdItemOfProduct(createItemOfProduct().getId());
 		returnOrders.setReturnCode("ML4365709BR");
 		returnOrders.setReason("Nhoque de batata com farofa entregue frio e com emabalagem danificada");
 		returnOrders.setDamage("Sim");
-		list.add(returnOrders);
-		return list;
+		return returnOrders;
 	}
-
-	List<ReturnOrders> createFailListReturnOrders() {
-		List<ReturnOrders> list = new ArrayList<>();
+	
+	ReturnOrders createReturnOrdersDamegeNot() {
 		ReturnOrders returnOrders  = new ReturnOrders();
-		returnOrders.setIdReturnOrders(null);
+		returnOrders.setIdReturnOrders(1L);
 		returnOrders.setIdItemOfProduct(createItemOfProduct().getId());
-		returnOrders.setReturnCode("ML4365709BR");
-		returnOrders.setReason("Nhoque de batata com farofa entregue frio e com emabalagem danificada");
-		returnOrders.setDamage("Sim");
-		list.add(returnOrders);
-		return list;
+		returnOrders.setReturnCode("ML8865457BR");
+		returnOrders.setReason("Castanha do Pará");
+		returnOrders.setDamage("Não");
+		return returnOrders;
 	}
 
 	ReturnOrdersHistory createReturnOrdersHistoryDiscartYes() {
 		ReturnOrdersHistory returnOrdersHistory = new ReturnOrdersHistory();
 		returnOrdersHistory.setIdReturnOrdersHistory(1L);
 		returnOrdersHistory.setIdPurchaseOrder(createPurchaseOrder().getId());
-		returnOrdersHistory.setReturnOrders(createReturnOrders());
+		returnOrdersHistory.setReturnOrders(createReturnOrdersDamegeYes());
 		returnOrdersHistory.setDiscard("Sim");
+		return returnOrdersHistory;
+	}
+	
+	ReturnOrdersHistory createReturnOrdersHistoryDiscartNot() {
+		ReturnOrdersHistory returnOrdersHistory = new ReturnOrdersHistory();
+		returnOrdersHistory.setIdReturnOrdersHistory(1L);
+		returnOrdersHistory.setIdPurchaseOrder(createPurchaseOrder().getId());
+		returnOrdersHistory.setReturnOrders(createReturnOrdersDamegeYes());
+		returnOrdersHistory.setDiscard("Não");
 		return returnOrdersHistory;
 	}
 
@@ -185,14 +175,7 @@ public class ReturnOrdersHistoryServiceTest {
 		return returnOrdersHistory;
 	}
 
-	ReturnOrdersHistory createReturnOrdersHistoryDiscartNot() {
-		ReturnOrdersHistory returnOrdersHistory = new ReturnOrdersHistory();
-		returnOrdersHistory.setIdReturnOrdersHistory(1L);
-		returnOrdersHistory.setIdPurchaseOrder(createPurchaseOrder().getId());
-		returnOrdersHistory.setReturnOrders(createReturnOrders());
-		returnOrdersHistory.setDiscard("Sim");
-		return returnOrdersHistory;
-	}
+
 
 	List<ReturnOrdersHistory> createListReturnOrdersHistory() {
 		List<ReturnOrdersHistory> list = new ArrayList<>();
@@ -206,7 +189,7 @@ public class ReturnOrdersHistoryServiceTest {
 		list.add(createFailReturnOrdersHistoryDiscart());
 		return list;
 	}
-	
+
 	ReturnOrdersHistoryDTO createReturnOrdersHistoryDTOYes() {
 		ReturnOrdersHistoryDTO dto = new ReturnOrdersHistoryDTO();
 		dto.setIdPurchaseOrder(createPurchaseOrder().getId());
@@ -214,7 +197,7 @@ public class ReturnOrdersHistoryServiceTest {
 		dto.setDiscard("Sim");
 		return dto;
 	}
-	
+
 	ReturnOrdersHistoryDTO createReturnOrdersHistoryDTONot() {
 		ReturnOrdersHistoryDTO dto = new ReturnOrdersHistoryDTO();
 		dto.setIdPurchaseOrder(createPurchaseOrder().getId());
@@ -222,18 +205,14 @@ public class ReturnOrdersHistoryServiceTest {
 		dto.setDiscard("Não");
 		return dto;
 	}
-	
-//	Optional<ReturnOrdersHistory> createOptionalReturnOrdersHistory() {
-//		ReturnOrdersHistory returnOrdersHistory = new ReturnOrdersHistory();
-//		returnOrdersHistory.setIdReturnOrdersHistory(null);
-//		returnOrdersHistory.setIdPurchaseOrder(createPurchaseOrder().getId());
-//		returnOrdersHistory.setReturnOrders(createReturnOrders());
-//		returnOrdersHistory.setDiscard("Sim");
-//		return null;
-//
-//	}
 
-
+	ReturnOrdersHistoryDTO createFailReturnOrdersHistoryDTO() {
+		ReturnOrdersHistoryDTO dto = new ReturnOrdersHistoryDTO();
+		dto.setIdPurchaseOrder(createPurchaseOrder().getId());
+		dto.setIdReturnOrders(null);
+		dto.setDiscard("Não");
+		return dto;
+	}
 
 	@Test
 	void testListReturnOrdersHistory() {
@@ -285,17 +264,170 @@ public class ReturnOrdersHistoryServiceTest {
 		assertNotNull(createReturnOrders());
 	}
 
+	@Test
+	void testConvertReturnOrdersHistoryToDTONoSuccess() {
+
+		createFailReturnOrdersHistoryDTO();		
+
+		Mockito.when(mockReturnOrdersHistoryRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(createListReturnOrdersHistory().get(0)));
+
+		Throwable exceptionThatWasThrown = assertThrows(Exception.class, () -> {
+			returnOrdersHistoryService.convertReturnOrdersHistoryToDTO(createFailReturnOrdersHistoryDTO());
+		});
+
+		assertTrue(exceptionThatWasThrown.getMessage(), true);
+	}
+
+	@Test
+	void testConvertReturnOrdersHistoryToDTOWithSuccess() throws Exception {
+
+		createReturnOrdersHistoryDTOYes();	
+
+		Mockito.when(mockReturnOrdersRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(createReturnOrders()));
+
+		returnOrdersHistoryService.convertReturnOrdersHistoryToDTO(createReturnOrdersHistoryDTOYes());
+
+		assertNotNull(createReturnOrdersHistoryDTOYes());
+	}
 
 
+	@Test
+	void testIncrementQuantity() throws Exception {
+
+		ItemOfProduct item = new ItemOfProduct();
+		item.setQuantity(200L);
+
+		BatchStock batchStock = new BatchStock();
+		batchStock.setCurrentQuantity(5000L);
+
+		List<BatchStock> batchStockList = new ArrayList<>();
+
+		batchStockList.add(batchStock);
+
+		returnOrdersHistoryService.incrementQuantity(item, batchStockList);
+
+		assertEquals(5200L,batchStockList.get(0).getCurrentQuantity());
+	}
 
 
+	@Test
+	void testProductsToBatchStockNoSuccess() throws Exception {
+
+		List<ItemOfProduct> itemOfProducts = new ArrayList<>();
+
+		PurchaseOrder purchaseOrder = new PurchaseOrder();
+		purchaseOrder.setId(1L);
+
+		SalesAd salesAd = new SalesAd();
+		salesAd.setVolume(500.0F);
+
+		ItemOfProduct itemOfProduct = new ItemOfProduct(3200L,salesAd,purchaseOrder);
+		ItemOfProduct itemOfProduct2 = new ItemOfProduct(500L,salesAd,purchaseOrder);
+		ItemOfProduct itemOfProduct3 = new ItemOfProduct(1100L,salesAd,purchaseOrder);
+
+		itemOfProducts.add(itemOfProduct);
+		itemOfProducts.add(itemOfProduct2);
+		itemOfProducts.add(itemOfProduct3);
+
+		Mockito.when(mockItemOfProductRepository.orderOfItem(Mockito.any(Long.class))).thenReturn(itemOfProducts);
+		Mockito.when(mockPurchaseOrderRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(purchaseOrder));
+
+		Throwable exceptionThatWasThrown = assertThrows(Exception.class, () -> {
+			returnOrdersHistoryService.productsToBatchStock(null);
+		});
+
+		assertTrue(exceptionThatWasThrown.getMessage(), true);
+	}
 
 
+	@Test
+	void testProductsToBatchStockWithSuccess() throws Exception {
+
+		List<ItemOfProduct> itemOfProducts = new ArrayList<>();
+
+		PurchaseOrder purchaseOrder = new PurchaseOrder();
+		purchaseOrder.setId(1L);
+
+		SalesAd salesAd = new SalesAd();
+		salesAd.setVolume(500.0F);
+
+		ItemOfProduct itemOfProduct = new ItemOfProduct(3200L,salesAd,purchaseOrder);
+		ItemOfProduct itemOfProduct2 = new ItemOfProduct(500L,salesAd,purchaseOrder);
+		ItemOfProduct itemOfProduct3 = new ItemOfProduct(1100L,salesAd,purchaseOrder);
+
+		itemOfProducts.add(itemOfProduct);
+		itemOfProducts.add(itemOfProduct2);
+		itemOfProducts.add(itemOfProduct3);
+
+		Mockito.when(mockItemOfProductRepository.orderOfItem(Mockito.any(Long.class))).thenReturn(itemOfProducts);
+		Mockito.when(mockPurchaseOrderRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(purchaseOrder));
+		returnOrdersHistoryService.productsToBatchStock(1L);
+
+		assertEquals(0L,itemOfProducts.get(0).getQuantity());
+		assertEquals(0L,itemOfProducts.get(1).getQuantity());
+	}
+
+	@Test
+	void testeToDiscardNoSuccess() throws Exception {
+		
+		createReturnOrdersHistoryDiscartYes();
+		createReturnOrdersHistoryDTONot();
+
+		Mockito.when(mockReturnOrdersHistoryRepository.save(Mockito.any(ReturnOrdersHistory.class))).thenReturn(createReturnOrdersHistoryDiscartYes());
 
 
+		Throwable exceptionThatWasThrown = assertThrows(Exception.class, () -> {
+			returnOrdersHistoryService.toDiscard(createReturnOrdersHistoryDTONot());
+		});
 
+		assertTrue(exceptionThatWasThrown.getMessage(), true);
+	}
 
+	@Test
+	void testeToDiscardWithSuccess() throws Exception {
+		
+		ReturnOrdersHistory orderHistory= createReturnOrdersHistoryDiscartYes();
+		ReturnOrdersHistoryDTO dto = createReturnOrdersHistoryDTOYes();
 
+		Mockito.when(mockReturnOrdersRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(createReturnOrders()));
+		Mockito.when(mockReturnOrdersHistoryRepository.save(Mockito.any(ReturnOrdersHistory.class))).thenReturn(orderHistory);
+		orderHistory = returnOrdersHistoryService.convertReturnOrdersHistoryToDTO(dto);
+		returnOrdersHistoryService.toDiscard(dto);
+		
+		assertNotNull(dto);	
+	}
+	
+	@Test
+	void testeIncrementInBatchStockNoSuccess() throws Exception {
+		
+		ReturnOrdersHistory orderHistory= createReturnOrdersHistoryDiscartYes();
+		ReturnOrdersHistoryDTO dto = createReturnOrdersHistoryDTOYes();
 
+		Mockito.when(mockReturnOrdersRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(createReturnOrdersDamegeYes()));
+		Mockito.when(mockReturnOrdersHistoryRepository.save(Mockito.any(ReturnOrdersHistory.class))).thenReturn(orderHistory);
+		orderHistory = returnOrdersHistoryService.convertReturnOrdersHistoryToDTO(dto);
 
+		Throwable exceptionThatWasThrown = assertThrows(Exception.class, () -> {
+			returnOrdersHistoryService.incrementInBatchStock(dto);
+
+		});
+
+		assertTrue(exceptionThatWasThrown.getMessage(), true);
+	}
+
+	@Test
+	void testeIncrementInBatchStockWithSuccess() throws Exception {
+		
+		ReturnOrdersHistory orderHistory= createReturnOrdersHistoryDiscartNot();
+		ReturnOrdersHistoryDTO dto = createReturnOrdersHistoryDTONot();
+
+		Mockito.when(mockPurchaseOrderRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(createPurchaseOrder()));
+		Mockito.when(mockReturnOrdersRepository.findById(Mockito.any(Long.class))).thenReturn(Optional.of(createReturnOrdersDamegeNot()));
+		Mockito.when(mockReturnOrdersHistoryRepository.save(Mockito.any(ReturnOrdersHistory.class))).thenReturn(orderHistory);
+		orderHistory = returnOrdersHistoryService.convertReturnOrdersHistoryToDTO(dto);
+		returnOrdersHistoryService.incrementInBatchStock(dto);
+		
+		
+		assertNotNull(dto);	
+	}
 }
