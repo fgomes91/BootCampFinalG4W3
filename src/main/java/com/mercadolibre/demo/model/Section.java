@@ -14,8 +14,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 @Table(name = "section")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@NoArgsConstructor
-@AllArgsConstructor
 public class Section implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -35,10 +33,17 @@ public class Section implements Serializable {
     @JoinColumn(name = "id_ware_house", nullable = false)
     private WareHouse WareHouse;
 
-
+    
+    
     public Section(Long capacity, String category, WareHouse WareHouse) {
         this.capacity = capacity;
         this.category = category;
         this.WareHouse = WareHouse;
     }
+
+
+
+	public Section() {
+		super();
+	}
 }

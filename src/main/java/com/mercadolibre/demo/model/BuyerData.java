@@ -84,9 +84,5 @@ public class BuyerData implements Serializable {
 		this.email = email;
 		this.telephone = telephone;
 		this.cellphone = cellphone;
-	}
-
-
- 
-	
+	}	
 }
