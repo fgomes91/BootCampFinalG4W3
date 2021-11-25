@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mercadolibre.demo.config.SecurityController;
 import com.mercadolibre.demo.dto.ReturnOrdersHistoryDTO;
 import com.mercadolibre.demo.model.ReturnOrdersHistory;
 import com.mercadolibre.demo.service.ReturnOrdersHistoryService;
 
 @RestController
 @RequestMapping("/api/v1/fresh-products/returnOrdersHistory")
-public class ReturnOrdersHistoryController {
+public class ReturnOrdersHistoryController implements SecurityController{
 
 	@Autowired
 	private ReturnOrdersHistoryService returnOrdersHistoryService;
