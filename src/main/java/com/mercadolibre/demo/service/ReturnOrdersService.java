@@ -50,8 +50,14 @@ public class ReturnOrdersService {
 	}
 
 	public String createReturnCode() {
-		String uuid = UUID.randomUUID().toString();
-		return uuid;
+		String numbers = "1234567890";
+		String sequenceInit = "";
+		char finalSequence;
+		for (int k = 0;k<7;k++){
+			finalSequence=numbers.charAt((int) Math.floor(Math.random() * numbers.length()));
+			sequenceInit += Character.toString(finalSequence);
+		}
+		return "ML"+sequenceInit+"BR";
 	}
 	
 	public Optional<ReturnOrders> getIdReturnOrders(ReturnOrders order) {
