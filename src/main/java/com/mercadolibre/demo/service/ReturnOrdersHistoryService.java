@@ -54,7 +54,7 @@ public class ReturnOrdersHistoryService {
 			productsToBatchStock(dto.getIdPurchaseOrder());
 			return returnOrdersHistoryRepository.save(returnOrdersHistory);
 		} else {
-			throw new Exception("Discard deve ser igual a Não, pois o produto sera devolvido ao Estoque");
+			throw new Exception("Discard deve ser igual a Não, pois o produto sera devolvido ao estoque");
 		}
 	}
 	
