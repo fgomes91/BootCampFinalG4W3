@@ -4,6 +4,149 @@
 
 ### Equipe 4 W-3
 
+Requesito 6 bootcampw3
+
+
+
+## Projeto Final Wave-3 Digital-House
+
+
+
+***API Meli-Frios, aplicação desenvolvida para devolução de produtos.***
+
+
+
+### **Antes de usar a API siga as \*instruções de autenticação na documentação\* para ter seu token de acesso**
+
+
+
+#### **Requesito final do bootcamp**
+
+**Caso seja seu primeiro contato com a aplicação, siga para o requesito 5.1 para configurar o local para uso**
+
+
+
+
+
+## Shipping - Devolução de produtos
+
+A aplicação de Meli-Frios recebeu mais um update para melhorar o caso de uso. A aplicação de devolução de produtos é um microsserviço que permite ao cliente
+criar uma solicitação de devolução de produtos alimentícios recebidos com avarias, sendo que a solicitação de devolução deve ser realizada no momento da entrega
+dos produtos e o entregador é o responsável por registrar a solicitação de devolução em um app mobile que consome a web api de devolução de produtos. A devolução
+ocorre quando os produtos estão com varia ou quando o entregador não encontra o cliente no endereço registrado. Sabendo que há dois cenários possíveis
+para devolução dos produtos, listo abaixo as formas de devolução  em função dos cenários:
+
+1º Cenário:
+
+1.1) Os produtos foram entregues ao cliente com avária, sendo assim após a cadastrado a solicitação de devolução dos produtos o entregador recolhe o produto e o direciona para o respectivo centro de distribuição para descarte.
+
+1.2) O entregador não localizou o cliente em seu respectivo endereço, porém ao verificar as embalagens dos produtos pode-se observar que os produtos estão
+com avarias. Sendo assim, entregador direciona os produtos para o respectivo centro de distribuição para descarte.
+
+2º Cenário:
+
+O entregador não localizou o cliente em seu respectivo endereço, porém ao verificar as embalagens dos produtos pode-se observar que os produtos não temavarias. Sendo assim, entregador direciona os produtos para o respectivo centro de distribuição para que esses produtos sejam armazenados no estoque.
+
+
+## BuyerData - Dados do comprador
+
+Informações para uso do swagger-ui:
+- Clique no button TryOut
+- Em seguida em Parameters digite os parametros necessários para o funcionamento do endpoint
+- Depois clique em Execute usar o controller
+
+
+### listCep - GET
+
+Este endpoint permite verificar as informações de um cep desde que o mesmo sejá válido. 
+
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/buyer-data-controller/listCep
+
+
+### saveAddress - POST
+
+Este endpoint permite cadastar os dados de endereço e contato do usuário, desde que o cep sejá válido. 
+
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/buyer-data-controller/saveAddress
+
+## Return Orders - Solicitação de devolução 
+
+Informações para uso do swagger-ui:
+- Clique no button TryOut
+- Em seguida em Parameters digite os parametros necessários para o funcionamento do endpoint
+- Depois clique em Execute usar o controller
+
+### saveReturnOrders - POST
+
+Este endpoint permite cadastrar a solicitação de devolução dos produtos, sabendo-se que a avaria(damage) deve ser "Sim" ou "Não".
+
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/return-orders-controller/saveReturnOrders
+
+
+### listAllReturnOrders - GET
+
+Este endpoint lista todas as solicitações de devolução dos produtos cadastradas.
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/return-orders-controller/listAllReturnOrders
+
+### findReturnOrders - GET
+
+Este endpoint permite verificar por Id uma solicitação de devolução de produtos cadastrada. 
+
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/return-orders-controller/findReturnOrders
+
+## Return History Orders - Histórico da solicitação de devolução 
+
+Informações para uso do swagger-ui:
+- Clique no button TryOut
+- Em seguida em Parameters digite os parametros necessários para o funcionamento do endpoint
+- Depois clique em Execute usar o controller
+
+### saveReturnOrders - POST
+
+Este endpoint permite o cadastrar histórico de uma solicitação de devolução dos produtos, e o enviar para descarte sabendo-se que a
+avaria(damage) deve ser "Sim".
+
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/return-orders-history-controller/toDiscard
+
+
+### increment - POST
+
+Este endpoint permite o cadastrar histórico de uma solicitação de devolução dos produtos, e o enviar o produto de volta ao estoque sabendo-se que a
+avaria(damage) deve ser "Não".
+
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/return-orders-history-controller/increment
+
+### listReturnOrdersHistory - GET
+
+Este endpoint lista todos históricos de solicitações de devolução dos produtos cadastradas. 
+
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/return-orders-history-controller/listReturnOrdersHistory
+
+### indReturnOrdersHistoryById - GET
+
+Este endpoint faz ma busca por id em todos históricos de solicitações de devolução dos produtos cadastradas e retorna a solicitação correspondente ao id.
+
+***Link para uso:***
+
+http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/return-orders-history-controller/findReturnOrdersHistoryById
+
+
 Requesito 5.1 bootcampw3
 
 
@@ -58,7 +201,7 @@ seguindo o exemplo abaixo de usuário teste, use para se registrar no banco:
 
 ```
 {
-  "user": "thiago",
+  "user": "filipe",
   "senha": "123"
 }
 ```
@@ -93,7 +236,7 @@ Pare criar um novo usuário você deve informar o "**user**" e colocar no campo 
 
 ```
 {
-    "user":"Meli",
+    "user":"filipe",
     "senha":"$2a$10$nuNzCf8js96QGhe53QeBTu3PEBcJV1sCY9xuE47kTIIAvSgzm8fYy",
     "ativo":true
 }
