@@ -1,0 +1,2064 @@
+{
+	"info": {
+		"_postman_id": "1d75b4c6-8e45-407a-b5e1-b5557a33647d",
+		"name": "Workplace-Meli",
+		"description": "Equipe 4 W-3\nRequesito 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Projeto final Wave-3 Digital-House",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Authentication",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user\":\"filipe\",\r\n    \"senha\":\"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/auth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"auth"
+									]
+								},
+								"description": "<h1>Para usar qualquer função da API vc deve estar cadastrado com usuário para gerar o Token de acesso! O Seu Token serializado é devolvido para você no console sempre que vc solicitar</h1>"
+							},
+							"response": []
+						}
+					],
+					"description": "Autenticação se faz necessária para utilizar os endpoints."
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Manga \",\r\n    \"description\": \"Manga com Vermelho e sabor ligeiramente adocicado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/product/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"product",
+										"save"
+									]
+								},
+								"description": "Informando o nome do produto seguindo de suas descrição faça o cadastro no sistema seguindo o modelo de requisição"
+							},
+							"response": []
+						},
+						{
+							"name": "2.1 - ListProducts",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/product/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"product",
+										"list"
+									]
+								},
+								"description": "Para listar os produtos em sistema basta solicitar via barra de navegação a requisição"
+							},
+							"response": []
+						},
+						{
+							"name": "5.2 - DueDateListFiltedByTypeAndTypeList",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/product/duedatelist/list/100/Refrigerado/asc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"product",
+										"duedatelist",
+										"list",
+										"100",
+										"Refrigerado",
+										"asc"
+									]
+								},
+								"description": "Obtenha todos os lotes armazenados em um setor e uma categoria especifica de um armazém, ordenados por sua data de vencimento, e possível  ordena o produto de maneira crescente e decrescente.\n\n*se faz necessário informar a quantidade máxima de dias que faltam para o vencimento.\n*se faz necessário informar o nome da categoria onde esta armazenado  o produto.\n*se faz necessário informar o tipo d ordenação."
+							},
+							"response": []
+						},
+						{
+							"name": "5.1 -DueDate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/product/duedatelist/800/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"product",
+										"duedatelist",
+										"800",
+										"1"
+									]
+								},
+								"description": "Obtenha todos os lotes armazenados em um setor de um armazém, ordenados por sua data de vencimento.\n* se faz necessário informar a quantidade máxima de dias que faltam para o vencimento."
+							},
+							"response": []
+						},
+						{
+							"name": "updateProduct",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Castanha do Pará\",\n    \"description\": \"Fruta da região norte do Brasil\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/product/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"product",
+										"update",
+										"1"
+									]
+								},
+								"description": "Para atualizar um produto no sistema basta informar seu ID na barra de navegação e enviar a atualização via corpo de requisição."
+							},
+							"response": []
+						},
+						{
+							"name": "deleteProduct",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/product/delete/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"product",
+										"delete",
+										"1"
+									]
+								},
+								"description": "Para deletar um produto basta informar o ID na barra de navegação e efetuar requisição para remover o produto do sistema"
+							},
+							"response": []
+						}
+					],
+					"description": "Cadastre os produtos que estarão na aplicação"
+				},
+				{
+					"name": "WareHouse - Armazém",
+					"item": [
+						{
+							"name": "WareHouse",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"wareHouseName\":\"WareHouse 6\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/warehouse/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"warehouse",
+										"save"
+									]
+								},
+								"description": "Com o modelo j-son a seguir crie o seu armazém"
+							},
+							"response": []
+						},
+						{
+							"name": "listWareHouse",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/warehouse/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"warehouse",
+										"list"
+									]
+								},
+								"description": "Listar Todos os Warehouses registrados em sistema no momento em que a requisição é enviada. Não precisa enviar dados"
+							},
+							"response": []
+						},
+						{
+							"name": "updateWareHouse",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idWareHouse\": 1,\n    \"wareHouseName\": \"WareHouse 6 teste\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/warehouse/update/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"warehouse",
+										"update",
+										"6"
+									]
+								},
+								"description": "Para atualizar informações de um WareHouse. Basta enviar na barra de navegação o ID do WareHouse que deseja atualizar e enviar no corpo a atualização de informação"
+							},
+							"response": []
+						}
+					],
+					"description": "Esse é o ponto de registro onde você nomeia o armazém e cria o armazém onde irá alocar os seus produtos do anúncio em nosso marketplace\n\n **Lembre-se de estar autenticado para poder registrar o nome do armazém no sistema**"
+				},
+				{
+					"name": "Buyer",
+					"item": [
+						{
+							"name": "Buyer",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"João\",\r\n    \"lastname\":\"II\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/buyer/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"buyer",
+										"save"
+									]
+								},
+								"description": "Para cadastrar o Comprador você deve informar o nome e sobrenome por corpo e enviar a requisição."
+							},
+							"response": []
+						},
+						{
+							"name": "listBuyer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/buyer/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"buyer",
+										"list"
+									]
+								},
+								"description": "Para listar todos os compradores cadastrado em sistema basta enviar a requisição"
+							},
+							"response": []
+						},
+						{
+							"name": "updateBuyer",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Gato\",\n    \"lastname\": \"Felix\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/buyer/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"buyer",
+										"update",
+										"1"
+									]
+								},
+								"description": "Para atualizar um Comprador em sistema, basta informar na barra de navegação o ID e enviar via requisição os dados atualizados seguindo o mesmo modelo do cadastro"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteBuyer",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODcxMjAsImV4cCI6MTYzNzY3MzUyMH0.P_61JBDhgH5j8zOZG1-IbSMq6MBOw7q-4UYOQ49yGUE",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/buyer/delete/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"buyer",
+										"delete",
+										"1"
+									]
+								},
+								"description": "Para deletar um comprador basta informar o ID na barra de navegação que o mesmo será removido do sistema"
+							},
+							"response": []
+						}
+					],
+					"description": "Controller para cadastro de compradores"
+				},
+				{
+					"name": "Section",
+					"item": [
+						{
+							"name": "2.2 - ListProductsForCategory",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/section/listCategory/CONGELADO",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"section",
+										"listCategory",
+										"CONGELADO"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Informe na key \"name\" o \"value\" do seu produto cadastrado. Por exemplo \"FRESCO\", \"CONGELADOS\" e etc para listar os produtos que lhe são de interesse. Desde que o mesmo exista no sistema\n\nusando o FORM-DATA"
+							},
+							"response": []
+						},
+						{
+							"name": "4.1 - ListProductById",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/section/listProduct/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"section",
+										"listProduct",
+										"10"
+									]
+								},
+								"description": "Listar Todos os produtos registrados no carrinho, momento em que a requisição é enviada. Não precisa enviar dados"
+							},
+							"response": []
+						},
+						{
+							"name": "1.1 (1/2) Section",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"capacity\": 4000,\r\n    \"idWareHouse\": 1000,\r\n    \"category\":\"TESTE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/section/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"section",
+										"save"
+									]
+								},
+								"description": "Informe a capacidade de armazenamento da sua sessão assim como o ID do WareHouse em que você fará o vinculo dessa sessão. E nomeie a sessão conforme o seu funcionamento"
+							},
+							"response": []
+						},
+						{
+							"name": "listSection",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/section/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"section",
+										"list"
+									]
+								},
+								"description": "Liste todas as sessões enviando a requisição via barra de navegação"
+							},
+							"response": []
+						},
+						{
+							"name": "updateSection",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n    \"capacity\": 352,\n    \"category\":\"CONGELADO\",\n    \"idWareHouse\": 1010192938838\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/section/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"section",
+										"update",
+										"1"
+									]
+								},
+								"description": "Informe o ID da sessão em barra de navegação e atualize as informações fazendo a requisição em corpo"
+							},
+							"response": []
+						}
+					],
+					"description": "Todo WareHouse é composto de sessões, seguindo o modelo de projeto temos 3 sessões, FRESCO, REFRIGERADOR E CONGELADO. Mas caso queira poderá cadastrar quantas sessões achar necessário para que sua WareHouse opere conforme sua necessidade."
+				},
+				{
+					"name": "Delegate",
+					"item": [
+						{
+							"name": "Delegate",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Yuna\",\r\n    \"lastname\": \"Sonjo\",\r\n    \"idSection\": 4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/delegate/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"delegate",
+										"save"
+									]
+								},
+								"description": "Para cadastrar um Delegate informe o nome e sobrenome e o ID da sessão que o mesmo irá trabalhar"
+							},
+							"response": []
+						},
+						{
+							"name": "listDelegate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/delegate/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"delegate",
+										"list"
+									]
+								},
+								"description": "Para listar todos os delegados de sessão basta enviar a requisição pelo navegador"
+							},
+							"response": []
+						},
+						{
+							"name": "updateDelegate",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Thiago\",\n    \"lastname\": \"Boneth\",\n    \"idSection\": 1\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/delegate/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"delegate",
+										"update",
+										"1"
+									]
+								},
+								"description": "Informe o ID na barra de navegação para atualizar a informações sendo enviadas pelo corpo de requisição"
+							},
+							"response": []
+						}
+					],
+					"description": "Toda Section de WareHouse tem seu responsável, segue passos de cadastro de responsável e uso"
+				},
+				{
+					"name": "Seller",
+					"item": [
+						{
+							"name": "Seller",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Thiago\",\r\n    \"lastname\":\"Luis\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/seller/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"seller",
+										"save"
+									]
+								},
+								"description": "Para cadastrar um vendedor use o seu nome e sobrenome em requisição no corpo"
+							},
+							"response": []
+						},
+						{
+							"name": "listSeller",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/seller/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"seller",
+										"list"
+									]
+								},
+								"description": "Chame a lista de Vendedores por requisição na barra de navegação"
+							},
+							"response": []
+						},
+						{
+							"name": "updateSeller",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Salvador\",\n    \"lastname\": \"Dali\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/seller/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"seller",
+										"update",
+										"1"
+									]
+								},
+								"description": "Para atualizar um vendedor, basta enviar o ID na barra de requisição e as informações atualizadas no corpo"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteSeller",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/seller/delete/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"seller",
+										"delete",
+										"5"
+									]
+								},
+								"description": "Para deletar um Vendedor basta informar seu ID em requisição na barra de navegação"
+							},
+							"response": []
+						}
+					],
+					"description": "Controller para vinculo de vendedor no sistema"
+				},
+				{
+					"name": "SalesAd",
+					"item": [
+						{
+							"name": "SalesAD",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \"volume\": 50,\r\n    \"minimumTemperature\": 1,\r\n    \"maximumTemperature\": 10,\r\n    \"price\": 80,\r\n    \"idSeller\":1,\r\n    \"idProduct\":4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/salesad/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"salesad",
+										"save"
+									]
+								},
+								"description": "Para criar um anuncio você deve informar:\n\nTemperatura máxima/mínima, para controle na sessão do Warehouse\nO preço do produto que está vendendo.\nA quantidade que o armazém possui\nQuem está vendendo pelo ID\nE o ID do produto."
+							},
+							"response": []
+						},
+						{
+							"name": "listSalesAd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/salesad/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"salesad",
+										"list"
+									]
+								},
+								"description": "Para listar todos os anúncios em sistema basta fazer a requisição pela barra de navegação"
+							},
+							"response": []
+						},
+						{
+							"name": "updateSalesAd",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJ0aGlhZ28iLCJpYXQiOjE2MzczMzIxNzAsImV4cCI6MTYzNzQxODU3MH0.My6MQiyG2z4sL1vLeR_vDv79OzXa2G7RjMKOLmpMA5k",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{   \n    \"volume\": 50,\n    \"minimumTemperature\": 1,\n    \"maximumTemperature\": 10,\n    \"price\": 80,\n    \"idSeller\":1,\n    \"idProduct\":1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/salesad/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"salesad",
+										"update",
+										"1"
+									]
+								},
+								"description": "Para atualizar basta retornar as informações em corpo com o ID em navegação"
+							},
+							"response": []
+						}
+					],
+					"description": "Aqui será onde você vai fazer sua gestão de anúncios na plataforma"
+				},
+				{
+					"name": "BathStock",
+					"item": [
+						{
+							"name": "1.1 - BatchStock",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"currentTemperature\": 38,\r\n    \"minimumTemperature\": 5,\r\n    \"initialQuantity\": 200,\r\n    \"currentQuantity\": 25,\r\n    \"dueDate\": \"2021-12-25\",\r\n    \"idSalesAd\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/batchstock/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"batchstock",
+										"save"
+									]
+								},
+								"description": "Para controlar seu lote do anuncio você precisa pro as seguintes informações\nTemperatura média.\nMinima temperatura.\nQuantidade inicial\nQuantidade atual no lote\nData de validade do produto\nID do anuncio"
+							},
+							"response": []
+						},
+						{
+							"name": "listBatchStock",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/batchstock/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"batchstock",
+										"list"
+									]
+								},
+								"description": "Usando a barra de navegação faça a requisição para acompanhar o status de todos os lotes cadastrados em anúncios"
+							},
+							"response": []
+						},
+						{
+							"name": "updateBatchStock",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"currentTemperature\": 35,\n    \"minimumTemperature\": 1,\n    \"initialQuantity\": 50,\n    \"currentQuantity\": 25,\n    \"dueDate\":\"         \",\n    \"idSalesAd\":19598689696\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/batchstock/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"batchstock",
+										"update",
+										"1"
+									]
+								},
+								"description": "Informe o ID do lote na barra de navegação e faça a atualização do lote no corpo de requisição"
+							},
+							"response": []
+						}
+					],
+					"description": "Faça o controle do seu lote de produtos"
+				},
+				{
+					"name": "ItemOfProduct",
+					"item": [
+						{
+							"name": "3.1 - ListProductOfBatchStock",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJ0aGlhZ28iLCJpYXQiOjE2MzczMzIxNzAsImV4cCI6MTYzNzQxODU3MH0.My6MQiyG2z4sL1vLeR_vDv79OzXa2G7RjMKOLmpMA5k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/itemOfProduct/listProductOfBatchStock",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"itemOfProduct",
+										"listProductOfBatchStock"
+									]
+								},
+								"description": "Procura por produto nos lotes."
+							},
+							"response": []
+						},
+						{
+							"name": "3.2 - ListOrderProduct",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJ0aGlhZ28iLCJpYXQiOjE2MzczMzIxNzAsImV4cCI6MTYzNzQxODU3MH0.My6MQiyG2z4sL1vLeR_vDv79OzXa2G7RjMKOLmpMA5k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/itemOfProduct/listOrderProduct/F",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"itemOfProduct",
+										"listOrderProduct",
+										"F"
+									]
+								},
+								"description": "Lista os produtos em ordem"
+							},
+							"response": []
+						},
+						{
+							"name": "2.5 - ZerarCarrinho",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/itemOfProduct/delete/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"itemOfProduct",
+										"delete",
+										"8"
+									]
+								},
+								"description": "Ele devolve os itens para o estoque e zera o carrinho"
+							},
+							"response": []
+						},
+						{
+							"name": "2.4 - ListProductForCar",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJ0aGlhZ28iLCJpYXQiOjE2MzczMzIxNzAsImV4cCI6MTYzNzQxODU3MH0.My6MQiyG2z4sL1vLeR_vDv79OzXa2G7RjMKOLmpMA5k",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/itemOfProduct/lisProductForCar/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"itemOfProduct",
+										"lisProductForCar",
+										"7"
+									]
+								},
+								"description": "Liste todos os produtos do carrinho."
+							},
+							"response": []
+						}
+					],
+					"description": "Interaja com os itens do carrinho."
+				},
+				{
+					"name": "InboundOrder",
+					"item": [
+						{
+							"name": "1.1 (2/2) - InboundOrder",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJ0aGlhZ28iLCJpYXQiOjE2MzczMzIxNzAsImV4cCI6MTYzNzQxODU3MH0.My6MQiyG2z4sL1vLeR_vDv79OzXa2G7RjMKOLmpMA5k",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idBatchStock\":1,\r\n    \"idSection\":4\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/inboundorder/save",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"inboundorder",
+										"save"
+									]
+								},
+								"description": "Informe o ID do BathStock que irá receber o produto e o ID da sessão em que ele ficará guardado."
+							},
+							"response": []
+						},
+						{
+							"name": "1.2 - UpdateInboundOrder",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJ0aGlhZ28iLCJpYXQiOjE2MzczMzIxNzAsImV4cCI6MTYzNzQxODU3MH0.My6MQiyG2z4sL1vLeR_vDv79OzXa2G7RjMKOLmpMA5k",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"idBatchStock\":1,\n    \"idSection\":5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/inboundorder/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"inboundorder",
+										"update",
+										"1"
+									]
+								},
+								"description": "Informe o ID na barra de navegação para atualização e as informações atualizadas no corpo de requisição"
+							},
+							"response": []
+						},
+						{
+							"name": "ListInboundOrder",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJ0aGlhZ28iLCJpYXQiOjE2MzczMzIxNzAsImV4cCI6MTYzNzQxODU3MH0.My6MQiyG2z4sL1vLeR_vDv79OzXa2G7RjMKOLmpMA5k",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/inboundorder/list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"inboundorder",
+										"list"
+									]
+								},
+								"description": "Liste todos os produtos seguidos de suas respectivas sessões"
+							},
+							"response": []
+						}
+					],
+					"description": "Cada compra chega como uma solicitação de entrada no Warehouse onde o produto recém chegado será alocado"
+				},
+				{
+					"name": "PurchOrder",
+					"item": [
+						{
+							"name": "2.3 - PurchaseOrder",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc1ODkyNzAsImV4cCI6MTYzNzY3NTY3MH0.nTvUr4RrpOiKZTvG1SGMMpSfIhlmJWvHIWpzwVSv-ao",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idBuyer\": 1,\r\n    \"itemOfProduct\": [\r\n      { \r\n        \"idSalesAd\": 1,\r\n        \"quantity\": 75\r\n      }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/fresh-products/purchaseorder/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"fresh-products",
+										"purchaseorder",
+										"add"
+									]
+								},
+								"description": "O carrinho de compras recebe o ID do comprados e o ID dos itens que serão comprados"
+							},
+							"response": []
+						}
+					],
+					"description": "O carrinho de compras da aplicação"
+				},
+				{
+					"name": "Requisito 6",
+					"item": [
+						{
+							"name": "BuyerData",
+							"item": [
+								{
+									"name": "saveAddress",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"idBuyer\": 6,\n    \"cep\": \"80020-320\",\n    \"referencia\": \"Nº0765, Condominio Águas Lindas , casa 26\",\n    \"email\": \"queen@foobar.com\",\n    \"telephone\": \"41 0000-3790\",\n    \"cellphone\": \"41 9004-0084\"\n}\n\n// {\n//     \"idBuyer\": 5,\n//     \"cep\": \"50020-290\",\n//     \"referencia\": \"Nº12, casa verde ao lado da padaria Dona Filó\",\n//     \"email\": \"antoliver@foobar.com\",\n//     \"telephone\": \"81 0000-3344\",\n//     \"cellphone\": \"81 9003-0011\"\n// }\n\n\n// {\n//     \"idBuyer\": 4,\n//     \"cep\": \"88010-101\",\n//     \"referencia\": \"Nº251, 4º andar Apt 46\",\n//     \"email\": \"fexavier@foobar.com\",\n//     \"telephone\": \"48 0000-8042\",\n//     \"cellphone\": \"48 9008-0089\"\n// }\n\n// {\n//     \"idBuyer\": 3,\n//     \"cep\": \"22630-010\",\n//     \"referencia\": \"Nº3602, Condominio Parque Azul, 8º andar, Apt 84\",\n//     \"email\": \"carlota@foobar.com\",\n//     \"telephone\": \"21 0000-2378\",\n//     \"cellphone\": \"21 9001-0002\"\n// }\n\n// {\n//     \"idBuyer\": 2,\n//     \"cep\": \"70200-670\",\n//     \"referencia\": \"Bloco D, 5º andar, Apt 55\",\n//     \"email\": \"carlota@foobar.com\",\n//     \"telephone\": \"61 0000-4657\",\n//     \"cellphone\": \"11 9006-1930\"\n// }\n\n// {\n//     \"idBuyer\": 1,\n//     \"cep\": \"11410-120\",\n//     \"referencia\": \"Bloco A, 3º andar, Apt 31\",\n//     \"email\": \"test@foobar.com\",\n//     \"telephone\": \"11 0000-0000\",\n//     \"cellphone\": \"11 90000-1111\"\n// }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/buyerdata/save",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"buyerdata",
+												"save"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "listCep",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/buyerdata/list/{cep}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"buyerdata",
+												"list",
+												"{cep}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ReturnOrders",
+							"item": [
+								{
+									"name": "saveReturnOrders",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"idItemOfProduct\": 5,\n    \"reason\": \"Cliente não localizado\",\n    \"damage\": \"Não\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/returnorders/save",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"returnorders",
+												"save"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "listAllReturnOrders",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/returnorders/list",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"returnorders",
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "findReturnOrders",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/returnorders/find/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"returnorders",
+												"find",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "ReturnOrdersHistory",
+							"item": [
+								{
+									"name": "toDiscard",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"idReturnOrders\": 2,\n    \"discard\": \"Sim\",\n    \"idPurchaseOrder\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/returnOrdersHistory/toDiscard",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"returnOrdersHistory",
+												"toDiscard"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "increment",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"idReturnOrders\": 1,\n    \"discard\": \"Não\",\n    \"idPurchaseOrder\": 1\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/returnOrdersHistory/increment",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"returnOrdersHistory",
+												"increment"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "listReturnOrdersHistory",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"idReturnOrders\": 14,\n    \"discard\": \"Não\",\n    \"idPurchaseOrder\": 3\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/returnOrdersHistory/list",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"returnOrdersHistory",
+												"list"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "findReturnOrdersHistoryById",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJOb3NzYSBBUFAiLCJzdWIiOiJmaWxpcGUiLCJpYXQiOjE2Mzc4NjAxMzYsImV4cCI6MTYzNzk0NjUzNn0.FQ61eth_ESVOzvpaeyIh3NBPWy_F-FueYNGdmM-t6Q4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"idReturnOrders\": 14,\n    \"discard\": \"Não\",\n    \"idPurchaseOrder\": 3\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/v1/fresh-products/returnOrdersHistory/findById/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"v1",
+												"fresh-products",
+												"returnOrdersHistory",
+												"findById",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			],
+			"description": "API Meli-Frios, aplicação desenvolvida para compra e venda de produtos frescos.\n\n<h3><strong>Antes de usar a API siga as *instruções de autenticação no fim da documentação* para ter seu token de acesso</strong></h3>"
+		}
+	]
+}
